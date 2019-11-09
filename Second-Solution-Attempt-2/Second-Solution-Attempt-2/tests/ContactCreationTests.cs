@@ -12,17 +12,17 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            OpenHomePage();
-            Login(new AccountData("admin", "secret"));
-            GoToAccountPage();
+            app.navigator.OpenHomePage();
+            app.auth.Login(new AccountData("admin", "secret"));
+            app.navigator.GoToAccountPage();
             InitContactData icd = new InitContactData();
             icd.Firstname = "Maxim";
             icd.Middlename = "Vladimirovitch";
             icd.Lastename = "Kolpakov";
-            InitContactCreation(icd);
-            SubmitContactCreation();
-            ReturnHomePage();
-            Logout();
+            app.contact.InitContactCreation(icd);
+            app.contact.SubmitContactCreation();
+            app.navigator.ReturnHomePage();
+            app.auth.Logout();
         }
     }
 }
